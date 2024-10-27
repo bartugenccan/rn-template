@@ -1,0 +1,9 @@
+{
+  "home": {
+    "mainBox": {
+      "createASession": "Create A Session",
+      "joinASession": "Join A Session",
+      "statistics": "Statistics"
+    }
+  }
+}
