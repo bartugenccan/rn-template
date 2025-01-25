@@ -1,1 +1,1 @@
-export { default as HistoryScreen } from './HistoryScreen';
+export { HistoryScreen } from './HistoryScreen';

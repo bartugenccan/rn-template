@@ -5,7 +5,7 @@ import { useAppNavigation } from '@/hooks';
 import { CustomText } from '@/components';
 import { verticalScale } from 'react-native-size-matters';
 
-const HomeScreen = () => {
+export const HomeScreen = () => {
   const navigation = useAppNavigation();
   return (
     <View style={styles.container}>
@@ -65,5 +65,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-export default HomeScreen;

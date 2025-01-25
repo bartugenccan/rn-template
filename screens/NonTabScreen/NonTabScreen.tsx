@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 
-const NonTabScreen = () => {
+export const NonTabScreen = () => {
   return (
     <View>
       <Text>NonTabScreen</Text>
@@ -9,4 +9,4 @@ const NonTabScreen = () => {
   );
 };
 
-export default NonTabScreen;
+const styles = StyleSheet.create({});
