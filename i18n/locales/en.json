@@ -1,4 +1,10 @@
 {
+  "tabs": {
+    "home": "Home",
+    "progress": "Progress",
+    "history": "History",
+    "profile": "Profile"
+  },
   "home": {
     "mainBox": {
       "createASession": "Create A Session",

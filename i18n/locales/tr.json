@@ -1,4 +1,10 @@
 {
+  "tabs": {
+    "home": "Anasayfa",
+    "progress": "İlerleme",
+    "history": "Geçmiş",
+    "profile": "Profil"
+  },
   "home": {
     "mainBox": {
       "createASession": "Create A Session",

@@ -1,4 +1,5 @@
-import { CustomTabBar } from "./CustomTabBar";
-import { CustomText } from "./CustomText";
+import { CustomTabBar } from './CustomTabBar';
+import { CustomText } from './CustomText';
+import { LoadingOverlay } from './LoadingOverlay';
 
-export { CustomTabBar, CustomText };
+export { CustomTabBar, CustomText, LoadingOverlay };
