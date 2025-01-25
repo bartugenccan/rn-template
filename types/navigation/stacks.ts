@@ -11,17 +11,17 @@ export type AuthStackParamList = {
 // Tab Stack Param Lists
 export type HomeStackParamList = {
   [AppRoutes.HOME]: undefined;
-  [AppRoutes.HOME_DETAIL]: undefined; // Example of tab-visible screen in Home
+  [AppRoutes.HOME_DETAIL]: undefined;
 };
 
 export type ProfileStackParamList = {
   [AppRoutes.PROFILE]: undefined;
-  [AppRoutes.PROFILE_EDIT]: undefined; // Example of tab-visible screen in Profile
+  [AppRoutes.PROFILE_EDIT]: undefined;
 };
 
 export type SettingsStackParamList = {
   [AppRoutes.SETTINGS]: undefined;
-  [AppRoutes.SETTINGS_DETAIL]: undefined; // Example of tab-visible screen in Settings
+  [AppRoutes.SETTINGS_DETAIL]: undefined;
 };
 
 // Tab Navigator
@@ -31,19 +31,18 @@ export type TabNavigatorParamList = {
   [TabRoutes.SETTINGS]: NavigatorScreenParams<SettingsStackParamList>;
 };
 
-// Main Stack (includes both tabs and modal screens)
+// Main Stack - Contains both TabNavigator and non-tab screens
 export type MainStackParamList = {
-  [AppRoutes.MAIN]: NavigatorScreenParams<TabNavigatorParamList>;
+  [AppRoutes.TABS]: NavigatorScreenParams<TabNavigatorParamList>;
   [AppRoutes.NON_TAB_SCREEN]: undefined;
+  [AppRoutes.MODAL_SCREEN]: undefined;
   // Add other non-tab screens here
 };
 
-// Root Navigator - The top level navigator
+// Root Navigator - Just switches between Auth and Main
 export type RootStackParamList = {
   [AppRoutes.AUTH]: NavigatorScreenParams<AuthStackParamList>;
   [AppRoutes.MAIN]: NavigatorScreenParams<MainStackParamList>;
-  [AppRoutes.NON_TAB_SCREEN]: undefined;
-  [AppRoutes.MODAL_SCREEN]: undefined;
 };
 
 // Navigation Types
