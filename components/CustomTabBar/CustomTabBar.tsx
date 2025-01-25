@@ -2,12 +2,32 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '../../constants/Colors';
-import { styles } from './CustomTabBar.styles';
+import { CustomText } from '@/components';
+import { scale, verticalScale } from 'react-native-size-matters';
+import { Colors } from '@/constants/Colors';
+import { useTranslation } from 'react-i18next';
+import { TabRoutes } from '@/types/navigation/routes';
 
 const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+  const { t } = useTranslation();
+
+  const getIconName = (routeName: string, isFocused: boolean) => {
+    // Use original route names instead of translated ones
+    switch (routeName) {
+      case TabRoutes.HOME:
+        return isFocused ? 'home' : 'home-outline';
+
+      case TabRoutes.PROFILE:
+        return isFocused ? 'person' : 'person-outline';
+      case TabRoutes.SETTINGS:
+        return isFocused ? 'settings' : 'settings-outline';
+      default:
+        return 'help-circle-outline';
+    }
+  };
+
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const isFocused = state.index === index;
@@ -24,27 +44,57 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
           }
         };
 
-        let iconName;
-        if (route.name === 'Home') {
-          iconName = isFocused ? 'home' : 'home-outline';
-        } else if (route.name === 'Profile') {
-          iconName = isFocused ? 'person' : 'person-outline';
-        } else if (route.name === 'Settings') {
-          iconName = isFocused ? 'settings' : 'settings-outline';
-        }
+        const iconName = getIconName(route.name, isFocused);
+        // Translate the tab name for display
+        const translatedName = t(`tabs.${route.name.toLowerCase()}`);
 
         return (
-          <TouchableOpacity key={index} onPress={onPress} style={styles.tabButton}>
-            <Ionicons
-              name={iconName as any}
-              size={30}
-              color={isFocused ? Colors.primary : Colors.primary}
-            />
+          <TouchableOpacity
+            key={index}
+            onPress={onPress}
+            style={styles.tabButton}
+            activeOpacity={0.7}>
+            <View style={styles.tabContent}>
+              <Ionicons name={iconName as any} size={24} color={isFocused ? '#fff' : '#8080C8'} />
+              <CustomText style={[styles.tabLabel, { color: isFocused ? '#fff' : '#8080C8' }]}>
+                {translatedName?.toLocaleUpperCase()}
+              </CustomText>
+              {isFocused && <View style={styles.activeDot} />}
+            </View>
           </TouchableOpacity>
         );
       })}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    backgroundColor: '#2D10FF',
+    height: verticalScale(84),
+    paddingBottom: verticalScale(23),
+  },
+  tabButton: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabLabel: {
+    fontSize: scale(12),
+    marginTop: verticalScale(4),
+  },
+  activeDot: {
+    width: scale(4),
+    height: scale(4),
+    borderRadius: scale(2),
+    backgroundColor: Colors.secondary,
+    marginTop: verticalScale(4),
+  },
+});
 
 export default CustomTabBar;
