@@ -10,6 +10,9 @@
       "createASession": "Create A Session",
       "joinASession": "Join A Session",
       "statistics": "Statistics"
-    }
+    },
+    "navigateToNonTabScreen": "Navigate to NonTabScreen",
+    "navigateToModalScreen": "Navigate to ModalScreen",
+    "navigateToHomeDetail": "Navigate to HomeDetail"
   }
 }

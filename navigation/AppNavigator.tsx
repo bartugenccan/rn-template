@@ -1,10 +1,9 @@
 import { AuthNavigator } from './AuthNavigator';
 import { TabNavigator } from './TabNavigator';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
-import { RootStackParamList } from '@/types/navigation';
-import { useEffect, useMemo } from 'react';
-import { useState } from 'react';
-import { NonTabScreen } from '@/screens';
+import { AppRoutes, RootStackParamList } from '@/types/navigation';
+import { useMemo, useState } from 'react';
+import { ModalScreen, NonTabScreen } from '@/screens';
 import { Platform } from 'react-native';
 import { enableScreens } from 'react-native-screens';
 
@@ -30,26 +29,38 @@ export const AppNavigator = () => {
     []
   );
 
+  const modalScreenOptions = useMemo(
+    () => ({
+      presentation: 'modal' as const,
+      headerShown: false,
+      cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+    }),
+    []
+  );
+
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       {isAuthenticated ? (
         <>
-          <Stack.Screen
-            name="MainTabs"
-            component={TabNavigator}
-            options={{
-              freezeOnBlur: false,
-            }}
-          />
-          <Stack.Group
-            screenOptions={{
-              presentation: 'modal',
-            }}>
-            <Stack.Screen name="NonTabScreen" component={NonTabScreen} />
+          <Stack.Group>
+            <Stack.Screen
+              name={AppRoutes.MAIN}
+              component={TabNavigator}
+              options={{
+                freezeOnBlur: false,
+              }}
+            />
+            <Stack.Screen name={AppRoutes.NON_TAB_SCREEN} component={NonTabScreen} />
+            {/* Add screens that you dont want to see tab bar */}
+          </Stack.Group>
+
+          <Stack.Group screenOptions={modalScreenOptions}>
+            <Stack.Screen name={AppRoutes.MODAL_SCREEN} component={ModalScreen} />
+            {/* Add screens that you want to see as a modal */}
           </Stack.Group>
         </>
       ) : (
-        <Stack.Screen name="Auth" component={AuthNavigator} />
+        <Stack.Screen name={AppRoutes.AUTH} component={AuthNavigator} />
       )}
     </Stack.Navigator>
   );

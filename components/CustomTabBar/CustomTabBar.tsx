@@ -6,6 +6,7 @@ import { CustomText } from '@/components';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { Colors } from '@/constants/Colors';
 import { useTranslation } from 'react-i18next';
+import { TabRoutes } from '@/types/navigation/routes';
 
 const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
   const { t } = useTranslation();
@@ -13,14 +14,13 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigat
   const getIconName = (routeName: string, isFocused: boolean) => {
     // Use original route names instead of translated ones
     switch (routeName) {
-      case 'Home':
+      case TabRoutes.HOME:
         return isFocused ? 'home' : 'home-outline';
-      case 'Progress':
-        return isFocused ? 'pie-chart' : 'pie-chart-outline';
-      case 'History':
-        return isFocused ? 'document-text-sharp' : 'document-text-outline';
-      case 'Profile':
+
+      case TabRoutes.PROFILE:
         return isFocused ? 'person' : 'person-outline';
+      case TabRoutes.SETTINGS:
+        return isFocused ? 'settings' : 'settings-outline';
       default:
         return 'help-circle-outline';
     }

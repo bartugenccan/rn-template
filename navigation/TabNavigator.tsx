@@ -1,17 +1,21 @@
 import { CustomTabBar } from '@/components';
-import { HomeScreen, ProfileScreen, ProgressScreen, HistoryScreen } from '@/screens';
-import { MainTabParamList } from '@/types/navigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TabNavigatorParamList } from '@/types/navigation/stacks';
+import { TabRoutes } from '@/types/navigation/routes';
+import { HomeNavigator } from './HomeNavigator';
+import { ProfileNavigator } from './ProfileNavigator';
+import { SettingsNavigator } from './SettingsNavigator';
 
-const Tab = createBottomTabNavigator<MainTabParamList>();
+const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
-export const TabNavigator = () => (
-  <Tab.Navigator
-    tabBar={(props) => <CustomTabBar {...props} />}
-    screenOptions={{ headerShown: false }}>
-    <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Progress" component={ProgressScreen} />
-    <Tab.Screen name="History" component={HistoryScreen} />
-    <Tab.Screen name="Profile" component={ProfileScreen} />
-  </Tab.Navigator>
-);
+export const TabNavigator = () => {
+  return (
+    <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{ headerShown: false }}>
+      <Tab.Screen name={TabRoutes.HOME} component={HomeNavigator} />
+      <Tab.Screen name={TabRoutes.PROFILE} component={ProfileNavigator} />
+      <Tab.Screen name={TabRoutes.SETTINGS} component={SettingsNavigator} />
+    </Tab.Navigator>
+  );
+};

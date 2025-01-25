@@ -1,1 +1,1 @@
-export { default as NonTabScreen } from "./NonTabScreen";
+export { default as NonTabScreen } from './NonTabScreen';

@@ -1,8 +1,9 @@
 import { NonTabScreen } from './NonTabScreen';
 import { HomeScreen } from './HomeScreen';
-import { HistoryScreen } from './HistoryScreen';
 import { ProfileScreen } from './ProfileScreen';
-import { ProgressScreen } from './ProgressScreen';
+import { SettingsScreen } from './SettingsScreen';
 import { SignUp } from './SignUp';
+import { ModalScreen } from './ModalScreen';
+import { HomeDetail } from './HomeDetail';
 
-export { NonTabScreen, HomeScreen, HistoryScreen, ProfileScreen, ProgressScreen, SignUp };
+export { NonTabScreen, HomeScreen, ProfileScreen, SettingsScreen, SignUp, ModalScreen, HomeDetail };
