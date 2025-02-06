@@ -1,6 +1,6 @@
 import axiosInstance from '../client';
 import { API_ENDPOINTS } from '../endpoints';
-import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '@/types/api';
+import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '../types';
 
 export const authService = {
   login: (data: LoginRequest) => axiosInstance.post<LoginResponse>(API_ENDPOINTS.AUTH.LOGIN, data),

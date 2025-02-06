@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import * as SecureStore from 'expo-secure-store';
 import ENV from '@/config/env';
 
@@ -34,7 +34,7 @@ axiosInstance.interceptors.request.use(async (config: InternalAxiosRequestConfig
 
 // Response interceptor
 axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => response,
+  (response) => response,
   (error: AxiosError) => {
     if (error.response?.status === 401) {
       // Handle unauthorized

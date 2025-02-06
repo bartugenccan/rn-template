@@ -1,6 +1,6 @@
 import axiosInstance from '../client';
 import { API_ENDPOINTS } from '../endpoints';
-import { UpdateProfileRequest, UpdateProfileResponse, UserProfile } from '@/types/api';
+import { UpdateProfileRequest, UpdateProfileResponse, UserProfile } from '../types';
 
 export const userService = {
   getProfile: () => axiosInstance.get<UserProfile>(API_ENDPOINTS.USER.PROFILE),
