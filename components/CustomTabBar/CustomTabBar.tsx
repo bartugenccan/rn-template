@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { CustomText } from '@/components';
+import { CustomText } from '@/components/CustomText';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { Colors } from '@/constants/Colors';
 import { useTranslation } from 'react-i18next';
