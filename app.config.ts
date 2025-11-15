@@ -16,12 +16,21 @@ const config: ExpoConfig = {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
+    infoPlist: {
+      NSCameraUsageDescription: 'This app needs access to your camera to capture clothing items.',
+      NSPhotoLibraryUsageDescription: 'This app needs access to your photo library to select clothing images.',
+    },
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/images/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
+    permissions: [
+      'android.permission.CAMERA',
+      'android.permission.READ_EXTERNAL_STORAGE',
+      'android.permission.WRITE_EXTERNAL_STORAGE',
+    ],
   },
   web: {
     bundler: 'metro',
@@ -30,7 +39,16 @@ const config: ExpoConfig = {
   experiments: {
     tsconfigPaths: true,
   },
-  plugins: ['expo-secure-store'],
+  plugins: [
+    'expo-secure-store',
+    [
+      'expo-image-picker',
+      {
+        photosPermission: 'The app accesses your photos to let you select clothing items.',
+        cameraPermission: 'The app accesses your camera to let you capture clothing items.',
+      },
+    ],
+  ],
 };
 
 export default config;

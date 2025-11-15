@@ -14,6 +14,8 @@ export enum AppRoutes {
   // Tab Screens
   HOME = 'Home',
   HOME_DETAIL = 'HomeDetail',
+  CAMERA = 'Camera',
+  GALLERY = 'Gallery',
   PROFILE = 'Profile',
   PROFILE_EDIT = 'ProfileEdit',
   SETTINGS = 'Settings',

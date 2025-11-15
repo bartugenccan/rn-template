@@ -12,6 +12,8 @@ export type AuthStackParamList = {
 export type HomeStackParamList = {
   [AppRoutes.HOME]: undefined;
   [AppRoutes.HOME_DETAIL]: undefined;
+  [AppRoutes.CAMERA]: undefined;
+  [AppRoutes.GALLERY]: undefined;
 };
 
 export type ProfileStackParamList = {

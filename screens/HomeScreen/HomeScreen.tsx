@@ -9,33 +9,25 @@ export const HomeScreen = () => {
   const navigation = useAppNavigation();
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <CustomText fontFamily="bold" style={styles.title}>
+          Virtual Try-On
+        </CustomText>
+      </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate(AppRoutes.NON_TAB_SCREEN)}
-          style={styles.button}>
-          <CustomText
-            i18nKey="home.navigateToNonTabScreen"
-            fontFamily="regular"
-            style={styles.buttonText}
-          />
+          onPress={() => navigation.navigate(AppRoutes.CAMERA)}
+          style={[styles.button, styles.primaryButton]}>
+          <CustomText fontFamily="bold" style={styles.primaryButtonText}>
+            Capture Clothing Item
+          </CustomText>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate(AppRoutes.MODAL_SCREEN)}
-          style={styles.button}>
-          <CustomText
-            i18nKey="home.navigateToModalScreen"
-            fontFamily="regular"
-            style={styles.buttonText}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate(AppRoutes.HOME_DETAIL)}
-          style={styles.button}>
-          <CustomText
-            i18nKey="home.navigateToHomeDetail"
-            fontFamily="regular"
-            style={styles.buttonText}
-          />
+          onPress={() => navigation.navigate(AppRoutes.GALLERY)}
+          style={[styles.button, styles.secondaryButton]}>
+          <CustomText fontFamily="regular" style={styles.secondaryButtonText}>
+            View My Wardrobe
+          </CustomText>
         </TouchableOpacity>
       </View>
     </View>
@@ -45,23 +37,43 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
+  header: {
+    paddingTop: verticalScale(60),
+    paddingHorizontal: 20,
+    paddingBottom: verticalScale(40),
     alignItems: 'center',
   },
+  title: {
+    fontSize: 32,
+    color: '#000',
+  },
   buttonContainer: {
-    rowGap: verticalScale(10),
-    alignItems: 'center',
+    flex: 1,
+    padding: 20,
+    rowGap: verticalScale(20),
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
+    paddingVertical: verticalScale(18),
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
   },
-  buttonText: {
-    color: 'white',
+  primaryButton: {
+    backgroundColor: '#007AFF',
+  },
+  primaryButtonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
+  secondaryButton: {
+    backgroundColor: '#f0f0f0',
+  },
+  secondaryButtonText: {
+    color: '#000',
+    fontSize: 16,
   },
 });
